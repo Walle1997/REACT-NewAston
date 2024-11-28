@@ -1,5 +1,4 @@
 import React from 'react';
-import ChildComponent from './ChildComponent';
 
 class MyFormComponent extends React.Component {
   constructor(props) {
@@ -53,13 +52,6 @@ class MyFormComponent extends React.Component {
         {this.state.submittedValue && (
           <p>Вы ввели: {this.state.submittedValue}</p>
         )}
-        <ChildComponent
-          stringProp="Это строка"
-          numberProp={42}
-          booleanProp={true}
-          arrayProp={[1, 2, 3]}
-          objectProp={{ key: 'value' }}
-        />
       </div>
     );
   }
