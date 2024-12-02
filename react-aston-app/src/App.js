@@ -34,25 +34,44 @@ export class App extends Component {
   }
 
   render() {
+    const isReactIncluded = this.state.name.toLowerCase().includes('реакт');
     return (
-      <div>
-        <h1>Форма</h1>
+      <React.Fragment>
+        <h1>Форма ввода имени</h1>
         <form>
           <label>
-            Вы ввели:
-            <input 
-              type="text" 
-              value={this.state.name} 
-              onChange={this.handleChange} 
+            Имя:
+            <input
+              type="text"
+              value={this.state.name}
+              onChange={this.handleChange}
+              ref={(ref) => (this.inputRef = ref)} 
             />
           </label>
-          <button type="submit" onClick={this.handleClick}>Отправить</button>
+          <button 
+            type="submit" 
+            onClick={this.handleClick} 
+            disabled={isReactIncluded} 
+          >
+            Отправить
+          </button>
+          <button type="button" onClick={this.handleFocusInput}>Фокус на инпут</button>
         </form>
-        {this.state.name && <p>Вы ввели: {this.state.name}</p>} 
-        <Child name={this.state.name} age={25} isActive={true} /> 
-      </div>
+        {this.state.name && <p>Вы ввели: {this.state.name}</p>}
+        <Child name={this.state.name} age={21} isActive={true} />
+        
+       
+        <ItemList items={this.state.items} />
+      </React.Fragment>
     );
   }
 }
 
-export default App;
+
+const ItemList = ({ items }) => (
+  <ul>
+    {items.map((item, index) => (
+      <li key={index}>{item}</li> 
+    ))}
+  </ul>
+);
