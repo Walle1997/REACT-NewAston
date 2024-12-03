@@ -37,7 +37,7 @@ export class App extends Component {
     const isReactIncluded = this.state.name.toLowerCase().includes('реакт');
     return (
       <React.Fragment>
-        <h1>Форма ввода имени</h1>
+        <h1>Форма</h1>
         <form>
           <label>
             Имя:
@@ -55,7 +55,7 @@ export class App extends Component {
           >
             Отправить
           </button>
-          <button type="button" onClick={this.handleFocusInput}>Фокус на инпут</button>
+          <button type="button" onClick={this.handleFocusInput}>Фокус</button>
         </form>
         {this.state.name && <p>Вы ввели: {this.state.name}</p>}
         <Child name={this.state.name} age={21} isActive={true} />
